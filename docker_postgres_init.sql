@@ -1,0 +1,20 @@
+\c foodDB;
+CREATE TABLE Food (
+    FoodID SERIAL PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Description TEXT,
+    Price DECIMAL(10, 2) NOT NULL,
+    Stock INT NOT NULL
+);
+CREATE TABLE Food_Location_Mapping (
+    MappingID SERIAL PRIMARY KEY,
+    FoodID INT NOT NULL,
+    LocationID INT NOT NULL,
+    FOREIGN KEY (FoodID) REFERENCES Food(FoodID) ON DELETE CASCADE
+);
+CREATE TABLE NutritionalValue (
+    FoodID INT PRIMARY KEY,
+    Serving VARCHAR(50) NOT NULL,
+    Calories INT NOT NULL,
+    FOREIGN KEY (FoodID) REFERENCES Food(FoodID) ON DELETE CASCADE
+);
