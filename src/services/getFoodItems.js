@@ -5,6 +5,7 @@ async function getFoodItems(idArray){
     console.log('getting list of foods')
     
     let response=[]
+    let stockOut=[]
     for(let id of idArray){
         const query='select * from Food where FoodID='+id.foodid;
         try{
